@@ -1,0 +1,21 @@
+service:
+  name: common-service
+
+plugins:
+  - serverless-bundle
+  - serverless-pseudo-parameters
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  memorySize: 256
+  stage: ${opt:stage, 'dev'}
+  region: eu-west-1
+
+functions:
+  eventContext:
+    handler: src/handlers/eventContext.handler
+    events:
+      - http:
+          method: POST
+          path: /eventContext
