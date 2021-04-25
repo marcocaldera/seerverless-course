@@ -7,7 +7,10 @@
   "scripts": {
     "sls-deploy": "sls deploy -v",
     "sls-remove": "sls remove -v",
-    "sls-create": "sls create --name auction-service --template-url https://github.com/codingly-io/sls-base"
+    "sls-create": "sls create --name auction-service --template-url https://github.com/codingly-io/sls-base",
+    "sls-deploy-function": "sls deploy -f createAuction",
+    "sls-logs-function": "sls logs -f processAuctions -t",
+    "sls-invoke-function": "sls invoke -f processAuctions -l"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
@@ -20,6 +23,13 @@
     "webpack": "^4.35.2"
   },
   "dependencies": {
-    "aws-sdk": "^2.639.0"
+    "@middy/core": "^2.0.1",
+    "@middy/http-error-handler": "^2.0.1",
+    "@middy/http-event-normalizer": "^2.0.1",
+    "@middy/http-json-body-parser": "^2.0.1",
+    "@middy/validator": "^2.1.0",
+    "aws-sdk": "^2.639.0",
+    "http-errors": "^1.8.0",
+    "uuid": "^8.3.2"
   }
 }
